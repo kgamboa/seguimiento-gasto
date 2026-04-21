@@ -194,7 +194,7 @@ app.listen(PORT, () => console.log(`Backend running on port ${PORT}`));
 const path = require('path');
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/dist')));
-  app.get('/:anything*', (req, res) => {
+  app.use((req, res) => {
     res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
   });
 }
